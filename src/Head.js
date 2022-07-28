@@ -32,7 +32,7 @@ const Head = () => {
     return (
         <>
          {
-            error ? <h1>Opps...</h1> : (
+            error ? <h1>Opps! Something went wrong...</h1> : (
                 <>
             <div>
                 <h1>{india}</h1>
