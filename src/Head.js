@@ -18,11 +18,10 @@ const Head = () => {
     const handleClick = () => {
         try {
             if (india === 'Hello Japan') {
-                setError(false);
                 setIndia('Hello India');
-            }
-            else {
-                setError(true)
+                setError(false);
+            } else {
+                setError(true);
             }
         }
         catch (e) {
@@ -31,19 +30,23 @@ const Head = () => {
     }
 
     return (
-        error ?
-            <h1>Oops!! Something Went Wrong...</h1> :
-            <>
+        <>
+         {
+            error ? <h1>Opps...</h1> : (
+                <>
+            <div>
+                <h1>{india}</h1>
+            </div>
+            <ErrorBoundary FallbackComponent={<h2>Could not update data.</h2>} >
                 <div>
-                    <h1>{india}</h1>
+                    <button onClick={handleClick}>India</button>
+                    <button onClick={() => { setIndia('Hello Japan') }}>Japan</button>
                 </div>
-                <ErrorBoundary FallbackComponent={<h2>Could not update data.</h2>} >
-                    <div>
-                        <button onClick={handleClick}>India</button>
-                        <button onClick={() => { setIndia('Hello Japan') }}>Japan</button>
-                    </div>
-                </ErrorBoundary>
-            </>
+            </ErrorBoundary>
+                </>
+            )
+         }
+        </>
     )
 }
 
